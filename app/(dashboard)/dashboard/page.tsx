@@ -6,7 +6,9 @@ import {
   Smartphone, 
   Zap, 
   TrendingUp,
-  Clock
+  Clock,
+  History,
+  ShieldCheck
 } from "lucide-react";
 import Link from "next/link";
 
@@ -95,5 +97,3 @@ export default function DashboardHome() {
   );
 }
 
-// Minimal ShieldCheck for the stats list since it wasn't imported
-import { ShieldCheck } from "lucide-react";

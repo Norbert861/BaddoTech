@@ -19,8 +19,8 @@ export default function BuyDataPage() {
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const selectedBundles = network ? DATA_PACKAGES[network as keyof typeof DATA_PACKAGES] : [];
-  const selectedBundle = selectedBundles.find(b => b.id === bundleId);
+  const selectedBundles = network ? (DATA_PACKAGES as any)[network] : [];
+  const selectedBundle = selectedBundles.find((b: any) => b.id === bundleId);
 
   const handlePurchase = async () => {
     if (!network || !bundleId || !phone) return toast.error("Please fill all fields");
@@ -96,7 +96,7 @@ export default function BuyDataPage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
-              {selectedBundles.map((b) => (
+              {selectedBundles.map((b: any) => (
                 <button
                   key={b.id}
                   onClick={() => setBundleId(b.id)}
