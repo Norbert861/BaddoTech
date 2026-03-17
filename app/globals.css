@@ -1,26 +1,102 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gold: #f59e0b;
+  --gold-light: #fcd34d;
+  --dark: #0a0a0f;
+  --card: #13131f;
+  --card2: #1a1a2e;
+  --border: rgba(245,158,11,0.2);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* { box-sizing: border-box; }
+
+body {
+  background: var(--dark);
+  color: #f1f1f1;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components {
+  .btn-gold {
+    @apply bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all duration-200 shadow-lg hover:shadow-amber-500/30 hover:scale-[1.02] active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border border-amber-500/50 hover:border-amber-400 text-amber-400 hover:text-amber-300 font-semibold px-6 py-3 rounded-xl transition-all duration-200 hover:bg-amber-500/10;
+  }
+
+  .btn-ghost {
+    @apply text-gray-400 hover:text-white hover:bg-white/5 px-4 py-2 rounded-lg transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-[#13131f] border border-amber-500/10 rounded-2xl p-6 shadow-xl;
+  }
+
+  .card-hover {
+    @apply card cursor-pointer hover:border-amber-500/40 hover:shadow-amber-500/10 transition-all duration-200 hover:scale-[1.01];
+  }
+
+  .input {
+    @apply bg-white/5 border border-white/10 focus:border-amber-500/60 rounded-xl px-4 py-3 text-white placeholder-gray-500 outline-none transition-all duration-200 w-full focus:ring-2 focus:ring-amber-500/20;
+  }
+
+  .label {
+    @apply text-sm text-gray-400 mb-1 block font-medium;
+  }
+
+  .badge-success {
+    @apply bg-green-500/10 text-green-400 border border-green-500/20 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-pending {
+    @apply bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-failed {
+    @apply bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-amber-500/10 transition-all duration-200 font-medium;
+  }
+
+  .sidebar-link-active {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-amber-400 bg-amber-500/15 border border-amber-500/20 font-semibold;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.gradient-text {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
+
+.hero-gradient {
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(245,158,11,0.15) 0%, transparent 70%);
+}
+
+.network-mtn { background: linear-gradient(135deg, #ffd700, #ffb300); }
+.network-telecel { background: linear-gradient(135deg, #e11d48, #9f1239); }
+.network-airteltigo { background: linear-gradient(135deg, #0f172a, #1e3a8a, #e11d48); }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+.float { animation: float 3s ease-in-out infinite; }
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(245,158,11,0); }
+}
+.pulse-gold { animation: pulse-gold 2s infinite; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #13131f; }
+::-webkit-scrollbar-thumb { background: #f59e0b44; border-radius: 3px; }
